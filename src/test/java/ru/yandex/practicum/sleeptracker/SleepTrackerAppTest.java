@@ -151,6 +151,7 @@ public class SleepTrackerAppTest {
         SleepAnalysisResult<Chronotype> result = chronotype.apply(testListChronotype);
         assertEquals(Chronotype.OWL, result.getValue());
     }
+
     @Test
     void shouldBeChronotypeLARK() {
         List<SleepingSession> testListChronotype = List.of(
@@ -204,6 +205,3 @@ public class SleepTrackerAppTest {
         assertEquals(Chronotype.PIGEON, result.getValue());
     }
 }
-
-
-
