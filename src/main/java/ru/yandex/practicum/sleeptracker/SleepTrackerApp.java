@@ -19,7 +19,7 @@ public class SleepTrackerApp {
 
     public static void main(String[] args) {
 
-        try(BufferedReader reader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
             List<String> source = reader.lines().toList();
             sleepingSession = source.stream()
                     .map(line -> line.split(";"))
