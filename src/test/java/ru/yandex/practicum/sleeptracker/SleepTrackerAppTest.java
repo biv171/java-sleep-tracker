@@ -54,7 +54,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void shouldBeMax60Min10ResultValue(){
+    void shouldBeMax60Min10ResultValue() {
         FuncMaxSession max = new FuncMaxSession();
         FuncMinSession min = new FuncMinSession();
 
@@ -66,7 +66,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void shouldBeBadCountEqualTwo(){
+    void shouldBeBadCountEqualTwo() {
         FuncBadSessionCount bad = new FuncBadSessionCount();
 
         SleepAnalysisResult<Integer> resultBad = bad.apply(testListSession);
@@ -74,7 +74,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void shouldBeCorrectCountForSleepNights(){
+    void shouldBeCorrectCountForSleepNights() {
         List<SleepingSession> testListSleepNights = List.of(
                 new SleepingSession(
                         LocalDateTime.of(2026, 9, 11, 21, 0),
@@ -98,7 +98,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void shouldBeCorrectCountForSleeplessNights(){
+    void shouldBeCorrectCountForSleeplessNights() {
         List<SleepingSession> testListSleeplessNights = List.of(
                 new SleepingSession(
                         LocalDateTime.of(2026, 9, 11, 6, 1),
@@ -122,7 +122,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void shouldBeZeroSleepLessNights(){
+    void shouldBeZeroSleepLessNights() {
         FuncSleeplessNights sleeplessNights = new FuncSleeplessNights();
         SleepAnalysisResult<Integer> result = sleeplessNights.apply(List.of());
         assertEquals(0, result.getValue());
