@@ -10,14 +10,26 @@ import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 
 public class SleepTrackerApp {
-    static final String fileName = "sleep_log.txt";
     static List<SleepingSession> sleepingSession = new ArrayList<>();
     static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("путь к файлу не указан");
+            return;
+        }
+
+        String fileName = args[0];
+
+        if (!Files.exists(Path.of(fileName))) {
+            System.out.println("Ошибка: файл '" + fileName + "' не найден.");
+            return;
+        }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
             List<String> source = reader.lines().toList();
@@ -26,7 +38,7 @@ public class SleepTrackerApp {
                     .map(line -> {
                         LocalDateTime startDateTime = LocalDateTime.parse(line[0], dateFormatter);
                         LocalDateTime endDateTime = LocalDateTime.parse(line[1], dateFormatter);
-                        return new SleepingSession(startDateTime,endDateTime,line[2]);
+                        return new SleepingSession(startDateTime,endDateTime,SleepQuality.valueOf(line[2]));
                     })
                     .collect(Collectors.toList());
 

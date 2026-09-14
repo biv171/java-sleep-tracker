@@ -21,9 +21,8 @@ public class FuncClassifierChronotype implements Function<List<SleepingSession>,
         //owl: startDT > 23:00, endtDT > 9:00
         int owlCount = (int)sleepNights.stream()
             .filter(session -> (
-                    session.startDT.toLocalTime().isAfter(LocalTime.of(23,0)) ||
-                    session.startDT.toLocalTime().isAfter(LocalTime.of(0,0)) &&
-                    session.endDT.toLocalTime().isAfter(LocalTime.of(9,0))
+                    session.getStartDT().toLocalTime().isAfter(LocalTime.of(23,0))  &&
+                    session.getEndDT().toLocalTime().isAfter(LocalTime.of(9,0))
             ))
             .count();
 

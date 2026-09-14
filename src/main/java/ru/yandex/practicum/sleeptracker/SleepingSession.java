@@ -6,9 +6,9 @@ import java.time.Duration;
 public class SleepingSession {
     LocalDateTime startDT;
     LocalDateTime endDT;
-    String quality;
+    SleepQuality quality;
 
-    public SleepingSession(LocalDateTime startDT, LocalDateTime endDT, String quality) {
+    public SleepingSession(LocalDateTime startDT, LocalDateTime endDT, SleepQuality quality) {
         this.startDT = startDT;
         this.endDT = endDT;
         this.quality = quality;
@@ -26,7 +26,7 @@ public class SleepingSession {
         return endDT;
     }
 
-    public String getQuality() {
+    public SleepQuality getQuality() {
         return quality;
     }
 }
